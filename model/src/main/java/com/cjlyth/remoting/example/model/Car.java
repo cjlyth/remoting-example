@@ -12,7 +12,7 @@ public class Car implements Serializable {
         return engine;
     }
 
-    public void setEngine(Engine engine) {
+    public <T extends Engine> void setEngine(T engine) {
         this.engine = engine;
     }
 

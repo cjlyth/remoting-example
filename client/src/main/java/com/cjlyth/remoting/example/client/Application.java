@@ -37,9 +37,18 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        Car hybrid = new Car();
-        hybrid.setEngine(new HybridEngine());
-        carService.setCar(hybrid);
+        try {
+            Car car = carService.getCar();
+        } catch (Exception ex) {
+            logger.debug("Error getting car: {}", ex.getLocalizedMessage());
+        }
+        try {
+            Car hybrid = new Car();
+            hybrid.setEngine(new HybridEngine());
+            carService.setCar(hybrid);
+        } catch (Exception ex) {
+            logger.debug("Error setting car: {}", ex.getLocalizedMessage());
+        }
 
         if (args.length > 0 && args[0].equals("exitcode")) {
             throw new ExitException();
