@@ -37,10 +37,10 @@ public class Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        Car car = carService.getCar();
-        logger.debug("Got Car: \n{} \nwith engine {}",
-                reflectionToString(car, ToStringStyle.MULTI_LINE_STYLE),
-                reflectionToString(car.getEngine(), ToStringStyle.MULTI_LINE_STYLE));
+        Car hybrid = new Car();
+        hybrid.setEngine(new HybridEngine());
+        carService.setCar(hybrid);
+
         if (args.length > 0 && args[0].equals("exitcode")) {
             throw new ExitException();
         }
