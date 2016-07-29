@@ -19,7 +19,7 @@ public class CarServiceImpl implements CarService {
     @Override
     public Car getCar() {
         Car car = new Car();
-        car.setEngine(new DefaultEngine());
+        car.setEngine(new GasEngine());
         logger.debug("Returning Car: \n{} \nwith engine {}",
                 reflectionToString(car, ToStringStyle.MULTI_LINE_STYLE),
                 reflectionToString(car.getEngine(), ToStringStyle.MULTI_LINE_STYLE));
